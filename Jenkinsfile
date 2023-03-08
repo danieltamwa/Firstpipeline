@@ -5,8 +5,8 @@ pipeline {
     environment {
         IMAGE_NAME = "applicationweb"
         IMAGE_TAG = "latest"
-        STAGING = "manma27-staging"
-        PRODUCTION = "manma27-production"
+        STAGING = "danieltamwa-staging"
+        PRODUCTION = "danieltamwa-production"
     }
     agent none
     stages {
@@ -14,7 +14,7 @@ pipeline {
            agent any
            steps {
               script {
-                sh 'docker build -t manma27/$IMAGE_NAME:$IMAGE_TAG .'
+                sh 'docker build -t danieltamwa/$IMAGE_NAME:$IMAGE_TAG .'
               }
            }
        }
@@ -23,7 +23,7 @@ pipeline {
           steps {
             script {
               sh '''
-                  docker run --name $IMAGE_NAME -d -p 80:5000 -e PORT=5000 manma27/$IMAGE_NAME:$IMAGE_TAG
+                  docker run --name $IMAGE_NAME -d -p 80:5000 -e PORT=5000 danieltamwa/$IMAGE_NAME:$IMAGE_TAG
                   sleep 5
               '''
              }
